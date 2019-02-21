@@ -30,12 +30,12 @@ def print_word_freq(filename):
     text = normalize_text(text)
     #or could use casefold
     words = []
-    words_count = {}
+    
     for word in text.split(" "):
         if word != '' and word not in STOP_WORDS:
             words.append(word)
-
-
+    print(words)
+    words_count = {}
     for word in words:
         if word in words_count:
             words_count[word] += 1
