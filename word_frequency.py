@@ -30,34 +30,48 @@ def print_word_freq(filename):
     text = normalize_text(text)
     #or could use casefold
     words = []
+    words_count = {}
     for word in text.split(" "):
         if word != '' and word not in STOP_WORDS:
             words.append(word)
-    
-    print(words)
-    return words
 
-def word_freq(text):
-    """frequency of words in text"""
-    text = list(text.split(" "))
-    words_count = {}
-    for word in text:
+
+    for word in words:
         if word in words_count:
             words_count[word] += 1
         else:
             words_count[word] = 1
     
-    return words_count
+    sorted_by_count = sorted(words_count.items(), key=lambda x: x[1], reverse=True)
+    sorted_dict = dict(sorted_by_count)
+
+    for item, count in sorted_dict.items():
+            print(item + " | " + str(count) + " " + str(("*" * count)))
+    
+    
+    
+    
+
+# def word_freq(text):
+#     """frequency of words in text"""
+#     text = list(text.split(" "))
+#     words_count = {}
+#     for word in text:
+#         if word in words_count:
+#             words_count[word] += 1
+#         else:
+#             words_count[word] = 1
+    
+#     return words_count
 
 
-def adjust_value(a_dict):
-    """adjust the value to include asterisks"""
-    for item, count in a_dict.items():
-        print(item + " | " + str(count) + " " + str(("*" * count)))
+# def adjust_value(a_dict):
+#     """adjust the value to include asterisks"""
+#     for item, count in a_dict.items():
+#         print(item + " | " + str(count) + " " + str(("*" * count)))
 
-step_1 = print_word_freq()
-step_2 = word_freq(step_1)
-adjust_value(step_2)
+# step_2 = word_freq(print_word_freq)
+# adjust_value(step_2)
 
 
 
