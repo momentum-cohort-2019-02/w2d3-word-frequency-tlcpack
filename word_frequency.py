@@ -34,7 +34,9 @@ def print_word_freq(filename):
     for word in text.split(" "):
         if word != '' and word not in STOP_WORDS:
             words.append(word)
-    print(words)
+    # print(words)
+
+    #create empty dict, adding words and counts to it
     words_count = {}
     for word in words:
         if word in words_count:
@@ -42,9 +44,12 @@ def print_word_freq(filename):
         else:
             words_count[word] = 1
     
+    #sort the dict
     sorted_by_count = sorted(words_count.items(), key=lambda x: x[1], reverse=True)
+    #sorting turns into a list, turn back into dict
     sorted_dict = dict(sorted_by_count)
 
+    #loop thru all key-value pairs to add *'s
     for item, count in sorted_dict.items():
             print(item + " | " + str(count) + " " + str(("*" * count)))
     
